@@ -6,6 +6,7 @@ import { MyApp } from './app.component';
 import { AboutPage } from '../pages/about/about';
 import { SkillRoll } from '../pages/skill-roll/skill-roll';
 import { Critical } from '../pages/critical/critical';
+import { RollResults } from '../pages/roll-results/roll-results';
 import { TabsPage } from '../pages/tabs/tabs';
 
 import { StatusBar } from '@ionic-native/status-bar';
@@ -17,6 +18,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     AboutPage,
     SkillRoll,
     Critical,
+    RollResults,
     TabsPage
   ],
   imports: [
@@ -29,6 +31,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     AboutPage,
     SkillRoll,
     Critical,
+    RollResults,
     TabsPage
   ],
   providers: [

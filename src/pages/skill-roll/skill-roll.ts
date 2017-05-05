@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { RollResults } from '../roll-results/roll-results';
 
 /**
  * Generated class for the SkillRoll page.
@@ -19,6 +20,10 @@ export class SkillRoll {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad SkillRoll');
+  }
+
+  doRoll() {
+    this.navCtrl.push(RollResults);
   }
 
 }

@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, Input, Output } from '@angular/core';
+import { DieType } from '../../services/diceData';
+import { Subject, Observable } from 'rxjs';
 
 /**
  * Generated class for the DieChooser component.
@@ -12,11 +14,25 @@ import { Component } from '@angular/core';
 })
 export class DieChooser {
 
-  text: string;
+  @Input() die: DieType;
+  private countSubject = new Subject<number>();
+  count$ = this.countSubject.asObservable()
+  .scan((acc, v) => {
+    if (v === 0) {
+      return 0;
+    } else {
+      return Math.min(Math.max(acc + v, 0), 8);
+    }
+  }, 0)
+  .startWith(0);
 
-  constructor() {
-    console.log('Hello DieChooser Component');
-    this.text = 'Hello World';
+  iterableCount$ = this.count$
+  .map(n => new Array(n).fill(0));
+
+  // constructor() { }
+
+  controlClick(incr: number) {
+    this.countSubject.next(incr);
   }
 
 }

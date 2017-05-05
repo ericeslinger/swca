@@ -30,7 +30,6 @@
     ],
     "member-ordering": [
       true,
-      "public-before-private",
       "instance-before-static",
       "variables-before-functions"
     ],

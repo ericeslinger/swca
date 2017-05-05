@@ -18,15 +18,20 @@
     <button ion-fab>ROLL</button>
   </ion-fab>
 
-  <p>
-    Here's some dice.
-    <svg class="boost"><use xlink:href="#d6"></use></svg>
-    <svg class="setback"><use xlink:href="#d6"></use></svg>
-    <svg class="ability"><use xlink:href="#d8"></use></svg>
-    <svg class="difficulty"><use xlink:href="#d8"></use></svg>
-    <svg class="proficiency"><use xlink:href="#d12"></use></svg>
-    <svg class="challenge"><use xlink:href="#d12"></use></svg>
-    <svg class="force"><use xlink:href="#d12"></use></svg>
-  </p>
+  <div class="die-selection">
+    <svg
+      class="die"
+      *ngFor="let die of chosenDice"
+      [ngClass]="die.class"
+    >
+      <use [attr.xlink:href]="die.iconURL"></use>
+    </svg>
+  </div>
+
+  <div class="chooser-column">
+    <div *ngFor="let dieType of dice">
+      <die-chooser [die]="dieType"></die-chooser>
+    </div>
+  </div>
 
 </ion-content>

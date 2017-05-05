@@ -24714,3 +24714,31 @@ ion-navbar.toolbar {
   stroke-width: 10;
   fill: #FFFFFF;
 }
+
+die-chooser {
+  height: 36px;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  padding-bottom: 16px;
+}
+
+die-chooser svg {
+  height: 36px;
+}
+
+page-skill-roll .chooser-column {
+  height: 80%;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+}

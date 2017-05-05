@@ -6,8 +6,10 @@ import { MyApp } from './app.component';
 import { AboutPage } from '../pages/about/about';
 import { SkillRoll } from '../pages/skill-roll/skill-roll';
 import { Critical } from '../pages/critical/critical';
+import { HistoryPage } from '../pages/history/history';
 import { RollResults } from '../pages/roll-results/roll-results';
 import { TabsPage } from '../pages/tabs/tabs';
+import { DieChooser } from '../components/die-chooser/die-chooser';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -19,7 +21,9 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     SkillRoll,
     Critical,
     RollResults,
-    TabsPage
+    DieChooser,
+    HistoryPage,
+    TabsPage,
   ],
   imports: [
     BrowserModule,
@@ -32,7 +36,8 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     SkillRoll,
     Critical,
     RollResults,
-    TabsPage
+    HistoryPage,
+    TabsPage,
   ],
   providers: [
     StatusBar,

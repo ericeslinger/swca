@@ -1,4 +1,3 @@
-<!-- Generated template for the DieChooser component -->
-<div>
-  {{text}}
-</div>
+<button ion-button (click)="controlClick(-1)"><ion-icon name="remove-circle"></ion-icon></button>
+<svg class="die" [ngClass]="die.class"><use [attr.xlink:href]="die.iconURL"></use></svg>
+<button ion-button (click)="controlClick(+1)"><ion-icon name="add-circle"></ion-icon></button>

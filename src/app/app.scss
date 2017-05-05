@@ -1,6 +1,56 @@
 // http://ionicframework.com/docs/v2/theming/
 
 
+.proficiency {
+  stroke: #000000;
+  stroke-linejoin: round;
+  stroke-width: 10;
+  fill: #CBD32C;
+}
+
+.challenge {
+  stroke: #000000;
+  stroke-linejoin: round;
+  stroke-width: 10;
+  fill: #A71F34;
+}
+
+.ability {
+  stroke: #000000;
+  stroke-linejoin: round;
+  stroke-width: 10;
+  fill: #1D7F37;
+}
+
+.difficulty {
+  stroke: #000000;
+  stroke-linejoin: round;
+  stroke-width: 10;
+  fill: #3C1F5C;
+}
+
+.boost {
+  stroke: #000000;
+  stroke-linejoin: round;
+  stroke-width: 10;
+  fill: #A2C8EF;
+}
+
+.setback {
+  stroke: #000000;
+  stroke-linejoin: round;
+  stroke-width: 10;
+  fill: #000000;
+}
+
+.force {
+  stroke: #000000;
+  stroke-linejoin: round;
+  stroke-width: 10;
+  fill: #FFFFFF;
+}
+
+
 // App Global Sass
 // --------------------------------------------------
 // Put style rules here that you want to apply globally. These

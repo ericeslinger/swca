@@ -1,5 +1,1 @@
-<svg id="hexagon" xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 320 320" xmlns:xlink="http://www.w3.org/1999/xlink">
-  <polygon
-    points="310,160 235,290 85,290 10,160 85,30 235,30">
-  </polygon>
-</svg>
+<svg viewBox="0 0 320 320"><path d="M310 160l-75 130H85L10 160 85 30h150z"/></svg>

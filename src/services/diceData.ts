@@ -7,6 +7,30 @@ export type DieNames
   | 'setback'
   | 'force';
 
+export type PipNames
+  = 'success'
+  | 'success'
+  | 'failure'
+  | 'advantage'
+  | 'blank'
+  | 'threat'
+  | 'despair'
+  | 'dark'
+  | 'light'
+  | 'triumph';
+
+export interface PipCount {
+  success: number;
+  failure: number;
+  advantage: number;
+  blank: number;
+  threat: number;
+  despair: number;
+  dark: number;
+  light: number;
+  triumph: number;
+}
+
 export interface DieType {
   label: string;
   iconURL: string;

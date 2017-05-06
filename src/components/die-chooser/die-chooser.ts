@@ -10,7 +10,7 @@ import { Subject, Observable } from 'rxjs';
  */
 @Component({
   selector: 'die-chooser',
-  templateUrl: 'die-chooser.html'
+  templateUrl: './die-chooser.html',
 })
 export class DieChooser {
 

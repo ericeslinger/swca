@@ -24733,7 +24733,7 @@ ion-navbar.toolbar {
   fill: #FFFFFF;
 }
 
-die-chooser {
+:host {
   height: 36px;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -24747,11 +24747,11 @@ die-chooser {
   margin-bottom: 1em;
 }
 
-die-chooser .skinny-button {
+:host .skinny-button {
   padding: 0;
 }
 
-die-chooser svg {
+:host svg {
   height: 36px;
   width: 36px;
 }
@@ -24763,6 +24763,21 @@ page-roll-results svg {
   -webkit-flex: 0 0 auto;
   -ms-flex: 0 0 auto;
   flex: 0 0 auto;
+  height: 20px;
+  width: 20px;
+}
+
+page-roll-results .result-row {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+}
+
+page-roll-results .result-row svg {
+  margin-right: 8px;
 }
 
 page-roll-results .die-selection {

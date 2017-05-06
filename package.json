@@ -1,8 +1,8 @@
 {
-  "name": "ionic-hello-world",
-  "version": "0.0.0",
-  "author": "Ionic Framework",
-  "homepage": "http://ionicframework.com/",
+  "name": "drama-dice",
+  "version": "0.2.0",
+  "author": "Eric Eslinter",
+  "homepage": "https://spherical.fish",
   "private": true,
   "scripts": {
     "clean": "ionic-app-scripts clean",
@@ -11,6 +11,7 @@
     "ionic:serve": "ionic-app-scripts serve"
   },
   "dependencies": {
+    "@angular/animations": "^4.0.2",
     "@angular/common": "4.0.2",
     "@angular/compiler": "4.0.2",
     "@angular/compiler-cli": "4.0.2",
@@ -52,5 +53,5 @@
       "locator": "ios"
     }
   ],
-  "description": "swca: An Ionic project"
+  "description": "Drama Dice: a Dieroller for a game"
 }

@@ -14,10 +14,10 @@
 
 
 <ion-content padding>
-  <ion-card>
-    <ion-card-header>Rolling</ion-card-header>
-    <ion-card-content>
-      <div class="die-selection">
+  <ion-grid>
+    <ion-row>
+      <div col-3> Rolled: </div>
+      <div col-9 class="die-selection">
         <svg
           class="die"
           *ngFor="let die of dice"
@@ -26,22 +26,41 @@
           <use [attr.xlink:href]="die.iconURL"></use>
         </svg>
       </div>
-    </ion-card-content>
-  </ion-card>
-  <ion-card>
-    <ion-card-header>Results</ion-card-header>
-    <ion-card-content>
-      <ion-list>
-        <ion-item> Success: {{results.success}} </ion-item>
-        <ion-item> Failure: {{results.failure}} </ion-item>
-        <ion-item> Advantage: {{results.advantage}} </ion-item>
-        <ion-item> Threat: {{results.threat}} </ion-item>
-        <ion-item> Triumph: {{results.triumph}} </ion-item>
-        <ion-item> Despair: {{results.despair}} </ion-item>
-        <ion-item> Dark: {{results.dark}} </ion-item>
-        <ion-item> Light: {{results.light}} </ion-item>
-      </ion-list>
-    </ion-card-content>
-  </ion-card>
-
+    </ion-row>
+    <ion-row *ngIf="netSuccess >= 0">
+      <svg col-2 class="result-header"><use xlink:href="#icon-success"></use></svg>
+      <div col-10>Net Success: <n-icons class="result-row" [icon]="'#icon-success'" [number]="netSuccess"></n-icons></div>
+    </ion-row>
+    <ion-row *ngIf="netSuccess < 0">
+      <svg col-2 class="result-header"><use xlink:href="#icon-failure"></use></svg>
+      <div col-10>Net Failure: {{netSuccess * -1}}</div>
+    </ion-row>
+    <ion-row *ngIf="netAdvantage >= 0">
+      <svg col-2 class="result-header"><use xlink:href="#icon-advantage"></use></svg>
+      <div col-10>Net Advantage: {{netAdvantage}}</div>
+    </ion-row>
+    <ion-row *ngIf="netAdvantage < 0">
+      <svg col-2 class="result-header"><use xlink:href="#icon-threat"></use></svg>
+      <div col-10>Net Threat: {{netAdvantage * -1}}</div>
+    </ion-row>
+    <ion-row *ngIf="results.triumph > 0">
+      <svg col-2 class="result-header"><use xlink:href="#icon-triumph"></use></svg>
+      <div col-10>Triumph!: {{results.triumph}}</div>
+    </ion-row>
+    <ion-row *ngIf="results.despair > 0">
+      <svg col-2 class="result-header"><use xlink:href="#icon-despair"></use></svg>
+      <div col-10>Despair!: {{results.despair}}</div>
+    </ion-row>
+    <ion-row *ngIf="forceRoll">
+      <svg col-2 class="result-header"><use xlink:href="#icon-dark"></use></svg>
+      <div col-10>Dark Force: {{results.dark}}</div>
+    </ion-row>
+    <ion-row *ngIf="forceRoll">
+      <svg col-2 class="result-header"><use xlink:href="#icon-light"></use></svg>
+      <div col-10>Light Force: {{results.light}}</div>
+    </ion-row>
+    <ion-row>
+      <critical-roller col-12></critical-roller>
+    </ion-row>
+  </ion-grid>
 </ion-content>

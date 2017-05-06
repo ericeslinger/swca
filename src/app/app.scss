@@ -1,5 +1,12 @@
 // http://ionicframework.com/docs/v2/theming/
 
+$challenge: #A71F34;
+$ability: #1D7F37;
+$difficulty: #3C1F5C;
+$boost: #A2C8EF;
+$setback: #000000;
+$force: #FFFFFF;
+
 
 .proficiency {
   stroke: #000000;
@@ -30,42 +37,42 @@
   stroke: #000000;
   stroke-linejoin: round;
   stroke-width: 10;
-  fill: #A71F34;
+  fill: $challenge;
 }
 
 .ability {
   stroke: #000000;
   stroke-linejoin: round;
   stroke-width: 10;
-  fill: #1D7F37;
+  fill: $ability;
 }
 
 .difficulty {
   stroke: #000000;
   stroke-linejoin: round;
   stroke-width: 10;
-  fill: #3C1F5C;
+  fill: $difficulty;
 }
 
 .boost {
   stroke: #000000;
   stroke-linejoin: round;
   stroke-width: 10;
-  fill: #A2C8EF;
+  fill: $boost;
 }
 
 .setback {
   stroke: #000000;
   stroke-linejoin: round;
   stroke-width: 10;
-  fill: #000000;
+  fill: $setback;
 }
 
 .force {
   stroke: #000000;
   stroke-linejoin: round;
   stroke-width: 10;
-  fill: #FFFFFF;
+  fill: $force;
 }
 
 

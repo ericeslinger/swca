@@ -1,14 +1,10 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+
 import { DieType, PipCount, PipNames } from '../../services/diceData';
 import { randItem } from '../../services/actuallyRandom';
 
-/**
- * Generated class for the RollResults page.
- *
- * See http://ionicframework.com/docs/components/#navigation for more info
- * on Ionic pages and navigation.
- */
+
 @IonicPage()
 @Component({
   selector: 'page-roll-results',
@@ -18,6 +14,9 @@ export class RollResults {
 
   dice: DieType[];
   results: { [name in PipNames]: number };
+  netSuccess: number;
+  netAdvantage: number;
+  forceRoll: boolean;
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
     this.dice = navParams.data.dice;
@@ -34,10 +33,9 @@ export class RollResults {
       light: 0,
       triumph: 0
     });
-  }
-
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad RollResults');
+    this.forceRoll = this.dice.filter(v => v.label === 'Force').length > 0;
+    this.netSuccess = this.results.success + this.results.triumph - this.results.failure - this.results.despair;
+    this.netAdvantage = this.results.advantage - this.results.threat;
   }
 
 }

@@ -1,9 +1,7 @@
 <button ion-button clear class="skinny-button" (click)="controlClick(-1)">
   <svg class="die"><use xlink:href="#minus-outline"></use></svg>
-  <!-- <ion-icon name="remove-circle"></ion-icon> -->
 </button>
 <svg class="die" [ngClass]="die.class"><use [attr.xlink:href]="die.iconURL"></use></svg>
 <button ion-button clear class="skinny-button" (click)="controlClick(+1)">
   <svg class="die"><use xlink:href="#plus-outline"></use></svg>
-  <!-- <ion-icon name="add-circle"></ion-icon> -->
 </button>

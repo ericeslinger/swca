@@ -30,10 +30,6 @@ export class SkillRoll implements AfterViewInit {
     this.diceNames = ['ability', 'proficiency', 'boost', 'difficulty', 'challenge', 'setback', 'force'];
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad SkillRoll');
-  }
-
   ngAfterViewInit() {
     this.selected$ = Observable.merge(
       ...this.counters.toArray()

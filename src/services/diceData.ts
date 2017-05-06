@@ -40,7 +40,7 @@ export interface DieType {
 
 export const ChallengeDie: DieType = {
   label: 'Challenge',
-  iconURL: '#d12',
+  iconURL: '#icon-hexagon',
   class: 'challenge',
   sides: [
     ['blank'],
@@ -60,7 +60,7 @@ export const ChallengeDie: DieType = {
 
 export const AbilityDie: DieType = {
   label: 'Ability',
-  iconURL: '#d8',
+  iconURL: '#icon-kite',
   class: 'ability',
   sides: [
     ['blank'],
@@ -76,7 +76,7 @@ export const AbilityDie: DieType = {
 
 export const BoostDie: DieType = {
   label: 'Boost',
-  iconURL: '#d6',
+  iconURL: '#icon-square',
   class: 'boost',
   sides: [
     ['blank'],
@@ -90,7 +90,7 @@ export const BoostDie: DieType = {
 
 export const DifficultyDie: DieType = {
   label: 'Difficulty',
-  iconURL: '#d8',
+  iconURL: '#icon-kite',
   class: 'difficulty',
   sides: [
     ['blank'],
@@ -106,7 +106,7 @@ export const DifficultyDie: DieType = {
 
 export const ForceDie: DieType = {
   label: 'Force',
-  iconURL: '#d12',
+  iconURL: '#icon-hexagon',
   class: 'force',
   sides: [
     ['dark'],
@@ -126,7 +126,7 @@ export const ForceDie: DieType = {
 
 export const ProficiencyDie: DieType = {
   label: 'Proficiency',
-  iconURL: '#d12',
+  iconURL: '#icon-hexagon',
   class: 'proficiency',
   sides: [
     ['blank'],
@@ -147,7 +147,7 @@ export const ProficiencyDie: DieType = {
 
 export const SetbackDie: DieType = {
   label: 'Setback',
-  iconURL: '#d6',
+  iconURL: '#icon-square',
   class: 'setback',
   sides: [
     ['blank'],

@@ -1,3 +1,11 @@
 page-roll-results {
-
+  svg {
+    display: flex;
+    flex: 0 0 auto;
+  }
+  .die-selection {
+    display: flex;
+    flex-flow: row wrap;
+    flex: 1 0 auto;
+  }
 }

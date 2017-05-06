@@ -7,12 +7,24 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>rollResults</ion-title>
+    <ion-title>Roll Results</ion-title>
   </ion-navbar>
 
 </ion-header>
 
 
 <ion-content padding>
-  results
-</ion-content>
+  <ion-card>
+    <ion-card-header>Rolling</ion-card-header>
+    <ion-card-content>
+      <div class="die-selection">
+        <svg
+          class="die"
+          *ngFor="let die of dice"
+          [ngClass]="die.class"
+        >
+          <use [attr.xlink:href]="die.iconURL"></use>
+        </svg>
+      </div>
+    </ion-card-content>
+  </ion-card></ion-content>

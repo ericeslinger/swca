@@ -14,24 +14,30 @@
 
 
 <ion-content padding>
-  <ion-fab bottom right (click)="doRoll()">
-    <button ion-fab>ROLL</button>
-  </ion-fab>
-
-  <div class="die-selection">
-    <svg
-      class="die"
-      *ngFor="let die of chosenDice"
-      [ngClass]="die.class"
-    >
-      <use [attr.xlink:href]="die.iconURL"></use>
-    </svg>
-  </div>
+    <ion-card>
+      <ion-card-header>Selected</ion-card-header>
+      <ion-card-content>
+        <div class="die-selection">
+          <svg
+            class="die"
+            *ngFor="let die of selected$ | async"
+            [ngClass]="die.class"
+          >
+            <use [attr.xlink:href]="die.iconURL"></use>
+          </svg>
+        </div>
+      </ion-card-content>
+    </ion-card>
 
   <div class="chooser-column">
-    <div *ngFor="let dieType of dice">
-      <die-chooser [die]="dieType"></die-chooser>
-    </div>
+    <die-chooser *ngFor="let dieType of diceNames" [die]="dice[dieType]"></die-chooser>
   </div>
-
+  <div class="control-row">
+    <button ion-button #roll>
+      ROLL
+    </button>
+    <button ion-button (click)="doReset()">
+      RESET
+    </button>
+  </div>
 </ion-content>

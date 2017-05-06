@@ -1,8 +1,27 @@
 page-skill-roll {
-  .chooser-column {
-    height: 80%;
+  .scroll-content {
     display: flex;
     flex-direction: column;
+    //justify-content: space-between;
+  }
+  .die-selection {
+    display: flex;
+    flex-flow: row wrap;
+    flex: 1 0 auto;
+    svg {
+      display: flex;
+      flex: 0 0 auto;
+      height: 1.5em;
+      width: 1.5em;
+    }
+  }
+  .chooser-column {
+    display: flex;
+    flex: 1 0 auto;
+    align-content: flex-end;
+    align-items: center;
+    flex-flow: row wrap;
+    //flex-direction: column;
     justify-content: space-between;
   }
 }

@@ -8,6 +8,24 @@
   fill: #CBD32C;
 }
 
+.die {
+  width: 1.5em;
+  height: 1.5em;
+}
+
+.child-vertical-margin {
+  > * {
+    margin-bottom: 0.5em;
+    margin-top: 0.5em;
+  }
+  > :first-child {
+    margin-top: 0;
+  }
+  > :last-child {
+    margin-bottom: 0;
+  }
+}
+
 .challenge {
   stroke: #000000;
   stroke-linejoin: round;

@@ -1,3 +1,12 @@
+export type DieNames
+  = 'ability'
+  | 'proficiency'
+  | 'difficulty'
+  | 'challenge'
+  | 'boost'
+  | 'setback'
+  | 'force';
+
 export interface DieType {
   label: string;
   iconURL: string;
@@ -125,3 +134,15 @@ export const SetbackDie: DieType = {
     ['threat'],
   ],
 };
+
+export const AllDice = {
+  ability: AbilityDie,
+  proficiency: ProficiencyDie,
+  difficulty: DifficultyDie,
+  challenge: ChallengeDie,
+  boost: BoostDie,
+  setback: SetbackDie,
+  force: ForceDie,
+};
+
+export const DiceNames = Object.keys(AllDice);

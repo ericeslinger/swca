@@ -24673,6 +24673,24 @@ ion-navbar.toolbar {
   fill: #CBD32C;
 }
 
+.die {
+  width: 1.5em;
+  height: 1.5em;
+}
+
+.child-vertical-margin > * {
+  margin-bottom: 0.5em;
+  margin-top: 0.5em;
+}
+
+.child-vertical-margin > :first-child {
+  margin-top: 0;
+}
+
+.child-vertical-margin > :last-child {
+  margin-bottom: 0;
+}
+
 .challenge {
   stroke: #000000;
   stroke-linejoin: round;
@@ -24723,21 +24741,90 @@ die-chooser {
   -webkit-flex-direction: row;
   -ms-flex-direction: row;
   flex-direction: row;
-  padding-bottom: 16px;
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
+  margin-bottom: 1em;
+}
+
+die-chooser .skinny-button {
+  padding: 0;
 }
 
 die-chooser svg {
   height: 36px;
+  width: 36px;
 }
 
-page-skill-roll .chooser-column {
-  height: 80%;
+page-roll-results svg {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex: 0 0 auto;
+  -ms-flex: 0 0 auto;
+  flex: 0 0 auto;
+}
+
+page-roll-results .die-selection {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-flow: row wrap;
+  -ms-flex-flow: row wrap;
+  flex-flow: row wrap;
+  -webkit-flex: 1 0 auto;
+  -ms-flex: 1 0 auto;
+  flex: 1 0 auto;
+}
+
+page-skill-roll .scroll-content {
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
   -webkit-flex-direction: column;
   -ms-flex-direction: column;
   flex-direction: column;
+}
+
+page-skill-roll .die-selection {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-flow: row wrap;
+  -ms-flex-flow: row wrap;
+  flex-flow: row wrap;
+  -webkit-flex: 1 0 auto;
+  -ms-flex: 1 0 auto;
+  flex: 1 0 auto;
+}
+
+page-skill-roll .die-selection svg {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex: 0 0 auto;
+  -ms-flex: 0 0 auto;
+  flex: 0 0 auto;
+  height: 1.5em;
+  width: 1.5em;
+}
+
+page-skill-roll .chooser-column {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex: 1 0 auto;
+  -ms-flex: 1 0 auto;
+  flex: 1 0 auto;
+  -webkit-align-content: flex-end;
+  -ms-flex-line-pack: end;
+  align-content: flex-end;
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-flex-flow: row wrap;
+  -ms-flex-flow: row wrap;
+  flex-flow: row wrap;
   -webkit-justify-content: space-between;
   -ms-flex-pack: justify;
   justify-content: space-between;

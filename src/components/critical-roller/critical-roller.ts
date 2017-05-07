@@ -9,9 +9,6 @@ import { trigger, state, style, animate, transition } from '@angular/animations'
 @Component({
   selector: 'critical-roller',
   templateUrl: 'critical-roller.html',
-  styles: [`
-    :host { border: 1px solid black; }
-  `],
   animations: [
     trigger('slideInOut', [
       state('in', style({
@@ -53,13 +50,14 @@ export class CriticalRoller {
     .map(v => v[0])
     .map(v => {
       const critScore = randInt(100) + 1 + v;
+      console.log(v, critScore);
       const theCrit = Criticals.find(c => (critScore >= c.min && critScore <= c.max));
       return {
         name: theCrit.name,
         desc: theCrit.description,
         val: critScore,
       };
-    }).share();
+    });
   }
   rollCrit($event) {
     this.eventSubject.next($event);

@@ -24726,6 +24726,10 @@ ion-navbar.toolbar {
   fill: #000000;
 }
 
+.strong {
+  font-weight: 500;
+}
+
 .force {
   stroke: #000000;
   stroke-linejoin: round;
@@ -24733,7 +24737,7 @@ ion-navbar.toolbar {
   fill: #FFFFFF;
 }
 
-:host {
+die-chooser {
   height: 36px;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -24747,11 +24751,11 @@ ion-navbar.toolbar {
   margin-bottom: 1em;
 }
 
-:host .skinny-button {
+die-chooser .skinny-button {
   padding: 0;
 }
 
-:host svg {
+die-chooser svg {
   height: 36px;
   width: 36px;
 }
@@ -24828,9 +24832,9 @@ page-skill-roll .chooser-column {
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  -webkit-flex: 1 0 auto;
-  -ms-flex: 1 0 auto;
-  flex: 1 0 auto;
+  -webkit-flex: 1 1 auto;
+  -ms-flex: 1 1 auto;
+  flex: 1 1 auto;
   -webkit-align-content: flex-end;
   -ms-flex-line-pack: end;
   align-content: flex-end;

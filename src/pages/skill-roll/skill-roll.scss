@@ -17,11 +17,10 @@ page-skill-roll {
   }
   .chooser-column {
     display: flex;
-    flex: 1 0 auto;
+    flex: 1 1 auto;
     align-content: flex-end;
     align-items: center;
     flex-flow: row wrap;
-    //flex-direction: column;
     justify-content: space-between;
   }
 }

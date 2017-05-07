@@ -13,9 +13,19 @@ $force: #FFFFFF;
   fill: #CBD32C;
 }
 
+.pull-right {
+  margin-left: auto;
+}
+
+@media screen and (max-width: 400px) {
+  .hidden-xs {
+    display:none;
+  }
+}
+
 .die {
-  width: 1.5em;
-  height: 1.5em;
+  width: 24px;
+  height: 24px;
 }
 
 .child-vertical-margin {

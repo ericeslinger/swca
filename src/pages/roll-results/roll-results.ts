@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { trigger, state, style, animate, transition } from '@angular/animations';
 
 import { DieType, PipCount, PipNames } from '../../services/diceData';
 import { randItem } from '../../services/actuallyRandom';
@@ -9,14 +10,40 @@ import { randItem } from '../../services/actuallyRandom';
 @Component({
   selector: 'page-roll-results',
   templateUrl: 'roll-results.html',
+  animations: [
+    trigger('slideInOut', [
+      state('in', style({
+        'max-height': '400px',
+        overflow: 'hidden',
+      })),
+      state('out', style({
+        overflow: 'hidden',
+        height: '0px',
+      })),
+      transition('in => out', animate('300ms ease-in-out')),
+      transition('out => in', animate('300ms ease-in-out')),
+    ]),
+    trigger('turnDown', [
+      state('in', style({
+        transform: 'rotate(90deg)',
+      })),
+      state('out', style({
+      })),
+      transition('in => out', animate('300ms ease-in-out')),
+      transition('out => in', animate('300ms ease-in-out')),
+    ]),
+  ]
 })
 export class RollResults {
 
   dice: DieType[];
   results: { [name in PipNames]: number };
-  netSuccess: number;
-  netAdvantage: number;
+  success: boolean;
+  net: number;
+  advantage: number = 0;
+  threat: number = 0;
   forceRoll: boolean;
+  showingCrit: string = 'out';
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
     this.dice = navParams.data.dice;
@@ -34,8 +61,24 @@ export class RollResults {
       triumph: 0
     });
     this.forceRoll = this.dice.filter(v => v.label === 'Force').length > 0;
-    this.netSuccess = this.results.success + this.results.triumph - this.results.failure - this.results.despair;
-    this.netAdvantage = this.results.advantage - this.results.threat;
+    const netSuccess = this.results.success + this.results.triumph - this.results.failure - this.results.despair;
+    const netAdvantage = this.results.advantage - this.results.threat;
+    if (netSuccess > 0) {
+      this.success = true;
+      this.net = netSuccess;
+    } else {
+      this.success = false;
+      this.net = Math.abs(netSuccess);
+    }
+
+    if (netAdvantage > 0) {
+      this.advantage = netAdvantage;
+    } else if (netAdvantage < 0) {
+      this.threat = Math.abs(netAdvantage);
+    }
   }
 
+  toggleCrit() {
+    this.showingCrit = this.showingCrit === 'in' ? 'out' : 'in';
+  }
 }

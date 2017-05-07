@@ -4,26 +4,10 @@ import { Criticals } from '../../services/critical';
 import { randInt } from '../../services/actuallyRandom';
 import { Observable, Subject } from 'rxjs';
 
-import { trigger, state, style, animate, transition } from '@angular/animations';
 
 @Component({
   selector: 'critical-roller',
   templateUrl: 'critical-roller.html',
-  animations: [
-    trigger('slideInOut', [
-      state('in', style({
-        'max-height': '400px',
-        overflow: 'hidden',
-      })),
-      state('out', style({
-        overflow: 'hidden',
-        // opacity: '0',
-        height: '0px',
-      })),
-      transition('in => out', animate('300ms ease-in-out')),
-      transition('out => in', animate('300ms ease-in-out')),
-    ]),
-  ]
 })
 export class CriticalRoller {
   private valSubject = new Subject<number>();
@@ -31,7 +15,6 @@ export class CriticalRoller {
 
   critBonus$: Observable<number>;
   crit$: Observable<{name: string, desc: string, val: number}>;
-  showing: string = 'out';
 
   constructor() {
     this.critBonus$ = this.valSubject.asObservable()
@@ -50,21 +33,16 @@ export class CriticalRoller {
     .map(v => v[0])
     .map(v => {
       const critScore = randInt(100) + 1 + v;
-      console.log(v, critScore);
       const theCrit = Criticals.find(c => (critScore >= c.min && critScore <= c.max));
       return {
         name: theCrit.name,
         desc: theCrit.description,
         val: critScore,
       };
-    });
+    }).share();
   }
   rollCrit($event) {
     this.eventSubject.next($event);
-  }
-
-  toggleContent() {
-    this.showing = this.showing === 'in' ? 'out' : 'in';
   }
 
   controlClick(val: number) {

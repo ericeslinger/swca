@@ -24673,9 +24673,19 @@ ion-navbar.toolbar {
   fill: #CBD32C;
 }
 
+.pull-right {
+  margin-left: auto;
+}
+
+@media screen and (max-width: 400px) {
+  .hidden-xs {
+    display: none;
+  }
+}
+
 .die {
-  width: 1.5em;
-  height: 1.5em;
+  width: 24px;
+  height: 24px;
 }
 
 .child-vertical-margin > * {
@@ -24737,6 +24747,34 @@ ion-navbar.toolbar {
   fill: #FFFFFF;
 }
 
+critical-roller {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+}
+
+critical-roller .buttons {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+}
+
+critical-roller .results {
+  padding: 1em;
+}
+
 die-chooser {
   height: 36px;
   display: -webkit-flex;
@@ -24748,40 +24786,40 @@ die-chooser {
   -webkit-align-items: center;
   -ms-flex-align: center;
   align-items: center;
-  margin-bottom: 1em;
+  margin-bottom: 16px;
 }
 
 die-chooser .skinny-button {
   padding: 0;
 }
 
-die-chooser svg {
+page-roll-results .result-header {
   height: 36px;
-  width: 36px;
 }
 
-page-roll-results svg {
+page-roll-results n-icons {
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  -webkit-flex: 0 0 auto;
-  -ms-flex: 0 0 auto;
-  flex: 0 0 auto;
-  height: 20px;
-  width: 20px;
+  -webkit-flex-flow: row wrap;
+  -ms-flex-flow: row wrap;
+  flex-flow: row wrap;
+  margin-left: 12px;
+}
+
+page-roll-results n-icons svg {
+  height: 24px;
+  width: 24px;
+  margin-right: 8px;
 }
 
 page-roll-results .result-row {
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
-}
-
-page-roll-results .result-row svg {
-  margin-right: 8px;
+  -webkit-flex: 1 0 auto;
+  -ms-flex: 1 0 auto;
+  flex: 1 0 auto;
 }
 
 page-roll-results .die-selection {
@@ -24828,6 +24866,21 @@ page-skill-roll .die-selection svg {
   width: 1.5em;
 }
 
+page-skill-roll .control-row {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-flex: 0 0 auto;
+  -ms-flex: 0 0 auto;
+  flex: 0 0 auto;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+}
+
 page-skill-roll .chooser-column {
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -24847,4 +24900,10 @@ page-skill-roll .chooser-column {
   -webkit-justify-content: space-between;
   -ms-flex-pack: justify;
   justify-content: space-between;
+}
+
+page-skill-roll .chooser-column die-chooser {
+  -webkit-flex: 1 0 33%;
+  -ms-flex: 1 0 33%;
+  flex: 1 0 33%;
 }

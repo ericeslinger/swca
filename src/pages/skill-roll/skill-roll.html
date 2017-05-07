@@ -14,20 +14,20 @@
 
 
 <ion-content padding>
-    <ion-card>
-      <ion-card-header>Selected</ion-card-header>
-      <ion-card-content>
-        <div class="die-selection">
-          <svg
-            class="die"
-            *ngFor="let die of selected$ | async"
-            [ngClass]="die.class"
-          >
-            <use [attr.xlink:href]="die.iconURL"></use>
-          </svg>
-        </div>
-      </ion-card-content>
-    </ion-card>
+  <ion-card>
+    <ion-card-header>Selected</ion-card-header>
+    <ion-card-content>
+      <div class="die-selection">
+        <svg
+          class="die"
+          *ngFor="let die of selected$ | async"
+          [ngClass]="die.class"
+        >
+          <use [attr.xlink:href]="die.iconURL"></use>
+        </svg>
+      </div>
+    </ion-card-content>
+  </ion-card>
 
   <div class="chooser-column">
     <die-chooser *ngFor="let dieType of diceNames" [die]="dice[dieType]"></die-chooser>

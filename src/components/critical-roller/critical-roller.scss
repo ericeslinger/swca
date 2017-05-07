@@ -1,0 +1,13 @@
+critical-roller {
+  display: flex;
+  flex-direction: column;
+  .buttons {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+  }
+  .results {
+    padding: 1em;
+  }
+}

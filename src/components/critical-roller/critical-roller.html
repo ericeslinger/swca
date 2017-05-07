@@ -1,15 +1,15 @@
-<div (click)="toggleContent()">Criticals</div>
-<div [@slideInOut]="showing">
-  <button ion-button clear class="skinny-button" (click)="controlClick(-10)">
-    <svg class="die"><use xlink:href="#minus-outline"></use></svg>
-  </button>
-  {{ critBonus$ | async}}
-  <button ion-button clear class="skinny-button" (click)="controlClick(+10)">
-    <svg class="die"><use xlink:href="#plus-outline"></use></svg>
-  </button>
-  <button ion-button (click)="rollCrit($event)">ROLL</button>
-  <div *ngIf"(crit$ | async)?.val > 0">
-    <span class="strong">{{ (crit$ | async)?.name }}({{ (crit$ | async)?.val }}):</span>
-    <span>{{ (crit$ | async)?.desc }}</span>
-  </div>
+<div class="results" *ngIf="crit$ | async; let crit; else waiting">
+  <p class="strong">{{ crit.name }}({{ crit.val }}):</p>
+  <p>{{ crit.desc }}</p>
 </div>
+<ng-template #waiting>
+  <div class="buttons">
+    <button ion-button clear class="skinny-button" (click)="controlClick(-10)">
+      <svg class="die"><use xlink:href="#minus-outline"></use></svg>
+    </button>
+    <button ion-button clear (click)="rollCrit($event)" class="strong">Roll +{{critBonus$ | async}}</button>
+    <button ion-button clear class="skinny-button" (click)="controlClick(+10)">
+      <svg class="die"><use xlink:href="#plus-outline"></use></svg>
+    </button>
+  </div>
+</ng-template>

@@ -25,9 +25,10 @@ import { randItem } from '../../services/actuallyRandom';
     ]),
     trigger('turnDown', [
       state('in', style({
-        transform: 'rotate(90deg)',
+        transform: 'rotate(-90deg)',
       })),
       state('out', style({
+        transform: 'rotate(0)',
       })),
       transition('in => out', animate('300ms ease-in-out')),
       transition('out => in', animate('300ms ease-in-out')),
@@ -43,6 +44,7 @@ export class RollResults {
   advantage: number = 0;
   threat: number = 0;
   forceRoll: boolean;
+  resultString: string;
   showingCrit: string = 'out';
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
@@ -63,12 +65,25 @@ export class RollResults {
     this.forceRoll = this.dice.filter(v => v.label === 'Force').length > 0;
     const netSuccess = this.results.success + this.results.triumph - this.results.failure - this.results.despair;
     const netAdvantage = this.results.advantage - this.results.threat;
+
+    if ((this.results.triumph > 0) && (this.results.despair === 0)) {
+      this.resultString = 'Triumphant';
+    } else if ((this.results.triumph === 0) && (this.results.despair > 0)) {
+      this.resultString = 'Despairing';
+    } else if ((this.results.triumph > 0) && (this.results.despair > 0)) {
+      this.resultString = 'Triumphant, Despairing';
+    } else {
+      this.resultString = '';
+    }
+
     if (netSuccess > 0) {
       this.success = true;
       this.net = netSuccess;
+      this.resultString = `${this.resultString} Success`;
     } else {
       this.success = false;
       this.net = Math.abs(netSuccess);
+      this.resultString = `${this.resultString} Failure`;
     }
 
     if (netAdvantage > 0) {

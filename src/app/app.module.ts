@@ -5,6 +5,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MyApp } from './app.component';
 
 import { HistoryModule } from '../pages/history/history.module';
+import { SettingsModule } from '../pages/settings/settings.module';
 import { SkillRollModule } from '../pages/skill-roll/skill-roll.module';
 import { RollResultsModule } from '../pages/roll-results/roll-results.module';
 import { DieChooser } from '../components/die-chooser/die-chooser';
@@ -24,6 +25,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     IonicModule.forRoot(MyApp),
     HistoryModule,
     RollResultsModule,
+    SettingsModule,
     SkillRollModule,
   ],
   bootstrap: [IonicApp],

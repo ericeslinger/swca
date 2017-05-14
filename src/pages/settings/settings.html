@@ -16,6 +16,9 @@
 <ion-content padding>
   <ion-item>
     <ion-label>Left-handed</ion-label>
-    <ion-toggle checked="false"></ion-toggle>
+    <ion-toggle checked="false" [(ngModel)]="leftHanded" (ngModelChange)="toggleHand($event)"></ion-toggle>
   </ion-item>
+  <div>
+    {{ (settings$ | async)?.attributes.leftHanded }} # {{ leftHanded }}
+  </div>
 </ion-content>

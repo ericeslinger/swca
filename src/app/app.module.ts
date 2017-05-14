@@ -1,4 +1,4 @@
-import { NgModule, ErrorHandler } from '@angular/core';
+import { NgModule, ErrorHandler, APP_INITIALIZER } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -12,7 +12,7 @@ import { DieChooser } from '../components/die-chooser/die-chooser';
 import { NIcons } from '../components/n-icons/n-icons';
 import { CriticalRoller } from '../components/critical-roller/critical-roller';
 
-import { PlumpProvider } from '../providers/plump';
+import { ForcePlump } from '../providers/plump';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -37,7 +37,8 @@ import { SplashScreen } from '@ionic-native/splash-screen';
   providers: [
     StatusBar,
     SplashScreen,
-    PlumpProvider,
+    ForcePlump,
+    { provide: APP_INITIALIZER, useFactory: (p: ForcePlump) => () => p.ready(), deps: [ForcePlump], multi: true },
     { provide: ErrorHandler, useClass: IonicErrorHandler }
   ]
 })

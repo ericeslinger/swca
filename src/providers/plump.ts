@@ -9,7 +9,13 @@ class HotCache extends MemoryStore {
   constructor() {
     super({ terminal: false });
   }
-  hot() { return true; }
+  hot(ref) {
+    if (this.store[this.keyString(ref)]) {
+      return true;
+    } else {
+      return false;
+    }
+  }
 }
 
 @Injectable()
@@ -20,6 +26,7 @@ export class ForcePlump extends Plump {
   ready(): Promise<ForcePlump> {
     if (this._ready === undefined) {
       this._ready = this.setTerminal( new LocalForageStore({ terminal: true }) )
+      // this._ready = this.setTerminal( new MemoryStore({ terminal: true }) )
       .then(() => this.addCache( new HotCache() ))
       .then(() => this.addType(UserSettingsModel))
       .then(() => this);
@@ -28,7 +35,7 @@ export class ForcePlump extends Plump {
   }
 }
 
-export const PlumpProvider = {
-  provide: ForcePlump,
-  useFactory: () => new ForcePlump().ready(),
-};
+// export const PlumpProvider = {
+//   provide: ForcePlump,
+//   useFactory: () => new ForcePlump().ready(),
+// };

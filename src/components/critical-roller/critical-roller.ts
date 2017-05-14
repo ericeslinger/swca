@@ -41,6 +41,7 @@ export class CriticalRoller {
       };
     }).share();
   }
+
   rollCrit($event) {
     this.eventSubject.next($event);
   }

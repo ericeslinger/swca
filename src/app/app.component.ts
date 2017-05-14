@@ -4,12 +4,14 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
 import { SkillRoll } from '../pages/skill-roll/skill-roll';
+import { Settings } from '../pages/settings/settings';
 
 @Component({
   templateUrl: 'app.html'
 })
 export class MyApp {
-  rootPage: any = SkillRoll;
+  // rootPage: any = SkillRoll;
+  rootPage: any = Settings;
 
   constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen) {
     platform.ready().then(() => {

@@ -12,6 +12,8 @@ import { DieChooser } from '../components/die-chooser/die-chooser';
 import { NIcons } from '../components/n-icons/n-icons';
 import { CriticalRoller } from '../components/critical-roller/critical-roller';
 
+import { PlumpProvider } from '../providers/plump';
+
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
@@ -35,6 +37,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
   providers: [
     StatusBar,
     SplashScreen,
+    PlumpProvider,
     { provide: ErrorHandler, useClass: IonicErrorHandler }
   ]
 })

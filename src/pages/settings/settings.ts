@@ -1,12 +1,9 @@
 import { Component } from '@angular/core';
+import { Observable } from 'rxjs';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { ForcePlump } from '../../providers/plump';
+import { UserSettingsModel, UserSettingsData } from '../../models/settings';
 
-/**
- * Generated class for the Settings page.
- *
- * See http://ionicframework.com/docs/components/#navigation for more info
- * on Ionic pages and navigation.
- */
 @IonicPage()
 @Component({
   selector: 'page-settings',
@@ -14,11 +11,14 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class Settings {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
-  }
-
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad Settings');
+  settings: UserSettingsModel;
+  settings$: Observable<UserSettingsData>;
+  constructor(public navCtrl: NavController, public navParams: NavParams, public plump: ForcePlump) {
+    // TODO not injecting properly
+    // factory is returning a promise that isn't resolved.
+    // look into APP_INITIALIZER
+    this.settings = this.plump.find({ typeName: 'userSettings', id: 'me' });
+    this.settings$ = this.settings.asObservable(['attributes']);
   }
 
 }

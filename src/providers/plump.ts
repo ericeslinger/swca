@@ -4,6 +4,7 @@ import { Plump, Model, MemoryStore, Schema } from 'plump';
 import { LocalForageStore } from 'plump-store-localforage';
 
 import { UserSettingsModel } from '../models/settings';
+import { HistoryItemModel, HistoryListModel } from '../models/history';
 
 class HotCache extends MemoryStore {
   constructor() {
@@ -29,13 +30,10 @@ export class ForcePlump extends Plump {
       // this._ready = this.setTerminal( new MemoryStore({ terminal: true }) )
       .then(() => this.addCache( new HotCache() ))
       .then(() => this.addType(UserSettingsModel))
+      .then(() => this.addType(HistoryItemModel))
+      .then(() => this.addType(HistoryListModel))
       .then(() => this);
     }
     return this._ready;
   }
 }
-
-// export const PlumpProvider = {
-//   provide: ForcePlump,
-//   useFactory: () => new ForcePlump().ready(),
-// };

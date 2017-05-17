@@ -24885,6 +24885,12 @@ page-skill-roll .control-row {
   justify-content: space-between;
 }
 
+page-skill-roll .control-row.lefty {
+  -webkit-flex-direction: row-reverse;
+  -ms-flex-direction: row-reverse;
+  flex-direction: row-reverse;
+}
+
 page-skill-roll .chooser-column {
   display: -webkit-flex;
   display: -ms-flexbox;

@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, OnDestroy, AfterViewInit } from '@angular/core';
 import { Observable } from 'rxjs';
-import { IonicPage, NavController, NavParams, Toggle } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, Toggle, TextInput } from 'ionic-angular';
 import { ForcePlump } from '../../providers/plump';
 import { UserSettingsModel, UserSettingsData } from '../../models/settings';
 
@@ -9,11 +9,14 @@ import { UserSettingsModel, UserSettingsData } from '../../models/settings';
   selector: 'page-settings',
   templateUrl: 'settings.html',
 })
-export class Settings implements OnInit {
+export class Settings implements OnInit, OnDestroy, AfterViewInit {
 
   settings: UserSettingsModel;
   leftHanded: boolean;
+  name: string;
   settings$: Observable<UserSettingsData>;
+  @ViewChild('nameInput') nameInput: TextInput;
+  unsubs = [];
 
   ngOnInit() {
     return this.plump.find({ typeName: 'userSettings', id: 'me' })
@@ -25,24 +28,38 @@ export class Settings implements OnInit {
           leftHanded: false,
           id: 'me',
         }, this.plump).save();
+      } else {
+        this.leftHanded = v.attributes.leftHanded;
+        this.name = v.attributes.name;
       }
     }).then(() => {
       this.settings = this.plump.find({ typeName: 'userSettings', id: 'me' });
-      this.settings$ = this.settings.asObservable()
-      .do(v => console.log(v));
-      // debugger;
-      // this.settings$.subscribe((v) => console.log(v));
+      this.settings$ = this.settings.asObservable();
+      this.settings$.subscribe((v) => {
+        this.leftHanded = v.attributes.leftHanded;
+        this.name = v.attributes.name;
+      });
     });
   }
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public plump: ForcePlump) {
-    // TODO not injecting properly
-    // factory is returning a promise that isn't resolved.
-    // look into APP_INITIALIZER
+  ngAfterViewInit() {
+    this.unsubs.push(
+      Observable.fromEvent(this.nameInput.getNativeElement(), 'keypress')
+      .debounceTime(500)
+      .map(v => this.nameInput.value)
+      .subscribe((v) => {
+        this.settings.set({ attributes: { name: this.nameInput.value } }).save();
+      })
+    );
   }
 
+  ngOnDestroy() {
+    this.unsubs.forEach(v => v.unsubscribe());
+  }
+
+  constructor(public navCtrl: NavController, public navParams: NavParams, public plump: ForcePlump) { }
+
   toggleHand($evt) {
-    console.log($evt);
     return this.settings.set({ attributes: { leftHanded: $evt } } )
     .save();
   }

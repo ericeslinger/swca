@@ -7,6 +7,9 @@
 <ion-header>
 
   <ion-navbar>
+    <button ion-button menuToggle="left">
+      <ion-icon name="menu"></ion-icon>
+    </button>
     <ion-title>Skill Roll</ion-title>
   </ion-navbar>
 
@@ -32,12 +35,12 @@
   <div class="chooser-column">
     <die-chooser *ngFor="let dieType of diceNames" [die]="dice[dieType]"></die-chooser>
   </div>
-  <div class="control-row">
-    <button ion-button #roll>
-      ROLL
-    </button>
+  <div class="control-row" [ngClass]="{lefty: (settings$ | async)?.attributes.leftHanded}">
     <button ion-button (click)="doReset()">
       RESET
+    </button>
+    <button ion-button #roll>
+      ROLL
     </button>
   </div>
 </ion-content>

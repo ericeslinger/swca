@@ -1,13 +1,10 @@
-<!--
-  Generated template for the History page.
-
-  See http://ionicframework.com/docs/components/#navigation for more info on
-  Ionic pages and navigation.
--->
 <ion-header>
 
   <ion-navbar>
-    <ion-title>history</ion-title>
+    <button ion-button menuToggle="left">
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>History</ion-title>
   </ion-navbar>
 
 </ion-header>
@@ -15,4 +12,7 @@
 
 <ion-content padding>
   previous rolls
+  <ion-card *ngFor="let roll of history.history$ | async">
+    <ion-card-content>{{(roll | async).roller}}</ion-card-content>
+  </ion-card>
 </ion-content>

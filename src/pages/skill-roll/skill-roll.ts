@@ -4,13 +4,9 @@ import { Subject, Observable } from 'rxjs';
 import { RollResults } from '../roll-results/roll-results';
 import { DieChooser } from '../../components/die-chooser/die-chooser';
 import { AllDice, DiceNames, DieType } from '../../services/diceData';
+import { ForcePlump } from '../../providers/plump';
+import { UserSettingsData } from '../../models/settings';
 
-/**
- * Generated class for the SkillRoll page.
- *
- * See http://ionicframework.com/docs/components/#navigation for more info
- * on Ionic pages and navigation.
- */
 @IonicPage()
 @Component({
   selector: 'page-skill-roll',
@@ -20,14 +16,16 @@ export class SkillRoll implements AfterViewInit {
 
   // dieCounts: Observable<{ [name in Dice.DieNames]: number }>;
   selected$: Observable<DieType[]>;
+  settings$: Observable<UserSettingsData>;
   dice: { [name: string]: DieType };
   diceNames: string[];
   @ViewChild('roll') rollButton;
   @ViewChildren(DieChooser) counters: QueryList<DieChooser>;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public plump: ForcePlump) {
     this.dice = AllDice;
     this.diceNames = ['ability', 'proficiency', 'boost', 'difficulty', 'challenge', 'setback', 'force'];
+    this.settings$ = this.plump.find({ typeName: 'userSettings', id: 'me' }).asObservable();
   }
 
   ngAfterViewInit() {

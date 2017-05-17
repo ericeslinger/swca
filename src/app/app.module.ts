@@ -13,6 +13,7 @@ import { NIcons } from '../components/n-icons/n-icons';
 import { CriticalRoller } from '../components/critical-roller/critical-roller';
 
 import { ForcePlump } from '../providers/plump';
+import { HistoryService } from '../providers/history';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -38,6 +39,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     StatusBar,
     SplashScreen,
     ForcePlump,
+    HistoryService,
     { provide: APP_INITIALIZER, useFactory: (p: ForcePlump) => () => p.ready(), deps: [ForcePlump], multi: true },
     { provide: ErrorHandler, useClass: IonicErrorHandler }
   ]

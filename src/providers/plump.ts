@@ -26,8 +26,8 @@ export class ForcePlump extends Plump {
 
   ready(): Promise<ForcePlump> {
     if (this._ready === undefined) {
-      this._ready = this.setTerminal( new LocalForageStore({ terminal: true }) )
-      // this._ready = this.setTerminal( new MemoryStore({ terminal: true }) )
+      // this._ready = this.setTerminal( new LocalForageStore({ terminal: true }) )
+      this._ready = this.setTerminal( new MemoryStore({ terminal: true }) )
       .then(() => this.addCache( new HotCache() ))
       .then(() => this.addType(UserSettingsModel))
       .then(() => this.addType(HistoryItemModel))

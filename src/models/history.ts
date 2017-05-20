@@ -1,24 +1,26 @@
-import { Model, Schema, RelationshipSchema, RelationshipItem } from 'plump';
-import { PipCount, DieNames } from '../services/diceData';
+import { Model, Schema, RelationshipSchema, RelationshipItem, ModelData } from 'plump';
+import { PipCount, DieNames, DieType } from '../services/diceData';
 
 export const HistoryListSchema: RelationshipSchema = {
   sides: {
-    items: { otherType: 'history', otherName: 'histories' },
-    histories: { otherType: 'historyItem', otherName: 'items' },
+    items: { otherType: 'historyItem', otherName: 'histories' },
+    histories: { otherType: 'history', otherName: 'items' },
   },
 };
+
+export interface HistoryItemAttributes {
+  id?: number;
+  roller: string;
+  dice: DieType[];
+  faces: string[][];
+  result: PipCount;
+  ts: Date;
+}
 
 export interface HistoryItem {
   typeName: 'historyItem';
   id: number;
-  attributes: {
-    id: number;
-    roller: string;
-    dice: DieNames[];
-    faces: string[][];
-    result: PipCount;
-    ts: Date;
-  };
+  attributes: HistoryItemAttributes;
   relationships: {
     histories: RelationshipItem[];
   };
@@ -42,6 +44,7 @@ export interface HistoryList {
   },
   attributes: {
     id: { type: 'number', readOnly: false },
+    dice: { type: 'array', readOnly: false },
     roller: { type: 'string', readOnly: false },
     faces: { type: 'array', readOnly: false },
     result: { type: 'object', readOnly: false },
@@ -58,4 +61,4 @@ export interface HistoryList {
   relationships: {
     items: { type: HistoryListSchema },
   },
-}) export class HistoryListModel extends Model<HistoryList> {}
+}) export class HistoryListModel extends Model<ModelData> {}

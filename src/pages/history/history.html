@@ -13,6 +13,6 @@
 <ion-content padding>
   previous rolls
   <ion-card *ngFor="let roll of history.history$ | async">
-    <ion-card-content>{{(roll | async).roller}}</ion-card-content>
+    <ion-card-content>{{roll}}</ion-card-content>
   </ion-card>
 </ion-content>

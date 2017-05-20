@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { trigger, state, style, animate, transition } from '@angular/animations';
 
+import { HistoryService } from '../../providers/history';
 import { DieType, PipCount, PipNames } from '../../services/diceData';
 import { randItem } from '../../services/actuallyRandom';
 
@@ -38,6 +39,7 @@ import { randItem } from '../../services/actuallyRandom';
 export class RollResults {
 
   dice: DieType[];
+  faces: string[][];
   results: { [name in PipNames]: number };
   success: boolean;
   net: number;
@@ -47,9 +49,10 @@ export class RollResults {
   resultString: string;
   showingCrit: string = 'out';
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public history: HistoryService) {
     this.dice = navParams.data.dice;
-    this.results = this.dice.map(v => randItem(v.sides))
+    this.faces = this.dice.map(v => randItem(v.sides))
+    this.results = this.faces
     .reduce((acc, val) => acc.concat(val), [])
     .reduce((acc, val) => Object.assign({}, acc, { [val]: acc[val] + 1 }), {
       success: 0,
@@ -62,6 +65,15 @@ export class RollResults {
       light: 0,
       triumph: 0
     });
+
+    this.history.addRoll({
+      roller: 'unset',
+      dice: this.dice,
+      faces: this.faces,
+      result: this.results,
+      ts: new Date(),
+    })
+
     this.forceRoll = this.dice.filter(v => v.label === 'Force').length > 0;
     const netSuccess = this.results.success + this.results.triumph - this.results.failure - this.results.despair;
     const netAdvantage = this.results.advantage - this.results.threat;

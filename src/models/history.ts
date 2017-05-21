@@ -1,5 +1,5 @@
 import { Model, Schema, RelationshipSchema, RelationshipItem, ModelData } from 'plump';
-import { PipCount, DieNames, DieType } from '../services/diceData';
+import { PipCount, DieNames, DieType } from './dice';
 
 export const HistoryListSchema: RelationshipSchema = {
   sides: {
@@ -8,13 +8,16 @@ export const HistoryListSchema: RelationshipSchema = {
   },
 };
 
-export interface HistoryItemAttributes {
-  id?: number;
-  roller: string;
+export interface PartialRoll {
   dice: DieType[];
   faces: string[][];
   result: PipCount;
   ts: Date;
+}
+
+export interface HistoryItemAttributes extends PartialRoll {
+  id?: number;
+  roller: string;
 }
 
 export interface HistoryItem {

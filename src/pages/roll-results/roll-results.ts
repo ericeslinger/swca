@@ -3,7 +3,8 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { trigger, state, style, animate, transition } from '@angular/animations';
 
 import { HistoryService } from '../../providers/history';
-import { DieType, PipCount, PipNames } from '../../services/diceData';
+import { UserSettingsService } from '../../providers/settings';
+import { DieType, PipCount, PipNames } from '../../models/dice';
 import { randItem } from '../../services/actuallyRandom';
 
 
@@ -66,8 +67,7 @@ export class RollResults {
       triumph: 0
     });
 
-    this.history.addRoll({
-      roller: 'unset',
+    this.history.notifyRoll({
       dice: this.dice,
       faces: this.faces,
       result: this.results,

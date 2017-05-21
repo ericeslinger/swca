@@ -1,6 +1,6 @@
-import { Model, Schema } from 'plump';
+import { Model, ModelData, Schema } from 'plump';
 
-export interface UserSettingsData {
+export interface UserSettingsData extends ModelData {
   typeName: 'userSettings';
   id: string;
   attributes: {

@@ -24,10 +24,27 @@ export class ForcePlump extends Plump {
 
   private _ready: Promise<ForcePlump>;
 
+  initializeSingletons(): Promise<ForcePlump> {
+    return this.ready()
+    .then(() => this.find({ typeName: 'userSettings', id: 'me' }).get())
+    .then((v) => {
+      if (v === null) {
+        return new UserSettingsModel({ id: 'me', name: 'Artoo', leftHanded: false }, this).save();
+      }
+    })
+    .then(() => this.find({ typeName: 'history', id: 'me'}).get())
+    .then((v) => {
+      if (v === null) {
+        return new HistoryListModel({ id: 'me' }, this).save();
+      }
+    })
+    .then(() => this);
+  }
+
   ready(): Promise<ForcePlump> {
     if (this._ready === undefined) {
-      // this._ready = this.setTerminal( new LocalForageStore({ terminal: true }) )
-      this._ready = this.setTerminal( new MemoryStore({ terminal: true }) )
+      this._ready = this.setTerminal( new LocalForageStore({ terminal: true }) )
+      // this._ready = this.setTerminal( new MemoryStore({ terminal: true }) )
       .then(() => this.addCache( new HotCache() ))
       .then(() => this.addType(UserSettingsModel))
       .then(() => this.addType(HistoryItemModel))

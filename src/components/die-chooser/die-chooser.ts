@@ -1,5 +1,5 @@
 import { Component, Input, Output } from '@angular/core';
-import { DieType } from '../../services/diceData';
+import { DieType } from '../../models/dice';
 import { Subject, Observable } from 'rxjs';
 
 /**

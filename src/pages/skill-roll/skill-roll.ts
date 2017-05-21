@@ -3,7 +3,7 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { Subject, Observable } from 'rxjs';
 import { RollResults } from '../roll-results/roll-results';
 import { DieChooser } from '../../components/die-chooser/die-chooser';
-import { AllDice, DiceNames, DieType } from '../../services/diceData';
+import { AllDice, DiceNames, DieType } from '../../models/dice';
 import { ForcePlump } from '../../providers/plump';
 import { UserSettingsData } from '../../models/settings';
 

@@ -4,7 +4,10 @@ import { IonicPage, NavController, NavParams, Toggle, TextInput } from 'ionic-an
 import { ForcePlump } from '../../providers/plump';
 import { UserSettingsModel, UserSettingsData } from '../../models/settings';
 
-@IonicPage()
+@IonicPage({
+  segment: 'settings',
+  name: 'settings',
+})
 @Component({
   selector: 'page-settings',
   templateUrl: 'settings.html',

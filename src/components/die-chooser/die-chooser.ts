@@ -2,12 +2,6 @@ import { Component, Input, Output } from '@angular/core';
 import { DieType } from '../../models/dice';
 import { Subject, Observable } from 'rxjs';
 
-/**
- * Generated class for the DieChooser component.
- *
- * See https://angular.io/docs/ts/latest/api/core/index/ComponentMetadata-class.html
- * for more info on Angular Components.
- */
 @Component({
   selector: 'die-chooser',
   templateUrl: './die-chooser.html',

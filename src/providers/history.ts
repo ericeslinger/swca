@@ -18,8 +18,12 @@ export class HistoryService {
     this._historyModel
     .asObservable()
     .map(v => v.relationships.items || [])
-    .map(v => v.map(i => this.plump.find({ typeName: 'historyItem', id: i.id })))
-    .do(v => console.log('history', v))
+    .flatMap(v => {
+      return Observable.fromPromise(
+        Promise.all(v.map(i => this.plump.find({ typeName: 'historyItem', id: i.id }).get()))
+      )
+    })
+    .map(v => v.sort((a, b) => b.attributes.ts.getTime() - a.attributes.ts.getTime()))
     .subscribe((v: HistoryItemModel[]) => this._history.next(v));
 
     Observable.combineLatest(
@@ -45,6 +49,14 @@ export class HistoryService {
 
   notifyRoll(roll: PartialRoll) {
     this._rollStream.next(roll);
+  }
+
+  clear() {
+    return this._historyModel.get('relationships.items')
+    .then((v) => {
+      v.relationships.items.forEach(i => this._historyModel.remove('items', i));
+      return this._historyModel.save();
+    })
   }
 
 }

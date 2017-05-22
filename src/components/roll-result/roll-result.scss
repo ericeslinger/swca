@@ -1,0 +1,56 @@
+roll-result {
+  .dice-history {
+    display: flex;
+    flex-direction: column;
+  }
+  .result-face {
+    border: 1px solid black;
+    margin: 4px;
+    padding: 2px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    &.proficiency {
+      background-color: $proficiency;
+      fill: black;
+    }
+    &.ability {
+      background-color: $ability;
+      fill: black;
+    }
+    &.challenge {
+      background-color: $challenge;
+      fill: white;
+    }
+    &.difficulty {
+      background-color: $difficulty;
+      fill: white;
+    }
+    &.boost {
+      background-color: $boost;
+      fill: black;
+    }
+    &.setback {
+      background-color: $setback;
+      fill: white;
+    }
+    &.force {
+      background-color: $force;
+      fill: black;
+    }
+  }
+  n-icons {
+    display: flex;
+    flex-flow: row wrap;
+    svg {
+      height: 24px;
+      width: 24px;
+      margin-right: 8px;
+    }
+  }
+  .detail-row {
+    display: flex;
+    flex-flow: row wrap;
+    align-items: center;
+  }
+}

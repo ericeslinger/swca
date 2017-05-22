@@ -11,8 +11,11 @@
 
 
 <ion-content padding>
-  previous rolls
-  <ion-card *ngFor="let roll of history.history$ | async">
-    <ion-card-content *ngIf="roll | async; let roll">{{roll.attributes.roller}}</ion-card-content>
-  </ion-card>
+  <ng-container *ngFor="let roll of history.history$ | async">
+    <roll-result [roll]="roll.attributes">
+    </roll-result>
+  </ng-container>
+  <button ion-button (click)="clear()">
+    Clear History
+  </button>
 </ion-content>

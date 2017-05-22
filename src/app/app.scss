@@ -4,13 +4,13 @@ $difficulty: #3C1F5C;
 $boost: #A2C8EF;
 $setback: #000000;
 $force: #FFFFFF;
-
+$proficiency: #CBD32C;
 
 .proficiency {
   stroke: #000000;
   stroke-linejoin: round;
   stroke-width: 10;
-  fill: #CBD32C;
+  fill: $proficiency;
 }
 
 .yay {
@@ -27,11 +27,6 @@ $force: #FFFFFF;
   }
 }
 
-.die {
-  width: 24px;
-  height: 24px;
-}
-
 .child-vertical-margin {
   > * {
     margin-bottom: 0.5em;
@@ -45,48 +40,53 @@ $force: #FFFFFF;
   }
 }
 
-.challenge {
-  stroke: #000000;
-  stroke-linejoin: round;
-  stroke-width: 10;
-  fill: $challenge;
-}
+.die {
+  width: 24px;
+  height: 24px;
 
-.ability {
-  stroke: #000000;
-  stroke-linejoin: round;
-  stroke-width: 10;
-  fill: $ability;
-}
+  &.challenge {
+    stroke: #000000;
+    stroke-linejoin: round;
+    stroke-width: 10;
+    fill: $challenge;
+  }
 
-.difficulty {
-  stroke: #000000;
-  stroke-linejoin: round;
-  stroke-width: 10;
-  fill: $difficulty;
-}
+  &.ability {
+    stroke: #000000;
+    stroke-linejoin: round;
+    stroke-width: 10;
+    fill: $ability;
+  }
 
-.boost {
-  stroke: #000000;
-  stroke-linejoin: round;
-  stroke-width: 10;
-  fill: $boost;
-}
+  &.difficulty {
+    stroke: #000000;
+    stroke-linejoin: round;
+    stroke-width: 10;
+    fill: $difficulty;
+  }
 
-.setback {
-  stroke: #000000;
-  stroke-linejoin: round;
-  stroke-width: 10;
-  fill: $setback;
+  &.boost {
+    stroke: #000000;
+    stroke-linejoin: round;
+    stroke-width: 10;
+    fill: $boost;
+  }
+
+  &.setback {
+    stroke: #000000;
+    stroke-linejoin: round;
+    stroke-width: 10;
+    fill: $setback;
+  }
+
+  &.force {
+    stroke: #000000;
+    stroke-linejoin: round;
+    stroke-width: 10;
+    fill: $force;
+  }
 }
 
 .strong {
   font-weight: 500;
-}
-
-.force {
-  stroke: #000000;
-  stroke-linejoin: round;
-  stroke-width: 10;
-  fill: $force;
 }

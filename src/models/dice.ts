@@ -35,7 +35,7 @@ export interface DieType {
   label: string;
   iconURL: string;
   class: string;
-  sides: string[][];
+  sides: PipNames[][];
 }
 
 export const ChallengeDie: DieType = {

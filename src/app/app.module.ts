@@ -12,6 +12,8 @@ import { DieChooser } from '../components/die-chooser/die-chooser';
 import { NIcons } from '../components/n-icons/n-icons';
 import { CriticalRoller } from '../components/critical-roller/critical-roller';
 
+import { PipesModule } from '../pipes/pipes.module';
+
 import { ForcePlump } from '../providers/plump';
 import { HistoryService } from '../providers/history';
 import { UserSettingsService } from '../providers/userSettings';
@@ -27,10 +29,11 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     BrowserModule,
     BrowserAnimationsModule,
     IonicModule.forRoot(MyApp),
-    HistoryModule,
-    RollResultsModule,
-    SettingsModule,
-    SkillRollModule,
+    // HistoryModule,
+    // RollResultsModule,
+    // SettingsModule,
+    // SkillRollModule,
+    PipesModule,
   ],
   bootstrap: [IonicApp],
   entryComponents: [

@@ -1,0 +1,53 @@
+<ion-card>
+  <ion-card-header ion-item (click)="toggleDetails()">
+    <h2>
+      {{resultString}} for {{roll.roller}}
+    </h2>
+    <ion-icon item-right [@rotateNinety]="showingDetails" name="arrow-dropleft"></ion-icon>
+  </ion-card-header>
+  <ion-card-content class="dice-history" [@slide]="showingDetails">
+    <div class="detail-label">
+      Rolled
+    </div>
+    <div class="detail-row">
+      <svg
+        class="die"
+        *ngFor="let die of roll.dice"
+        [ngClass]="die.type.class"
+      >
+        <use [attr.xlink:href]="die.type.iconURL"></use>
+      </svg>
+    </div>
+    <div class="detail-label">
+      Net Results
+    </div>
+    <div class="detail-row">
+      <n-icons [icon]="success ? '#icon-success' : '#icon-failure'" [number]="net"></n-icons>
+      <ng-container *ngIf="bonus > 0">
+        <n-icons [icon]="good ? '#icon-advantage' : '#icon-threat'" [number]="bonus"></n-icons>
+      </ng-container>
+      <ng-container *ngIf="triumph > 0">
+        <n-icons icon="#icon-triumph" [number]="triumph"></n-icons>
+      </ng-container>
+      <ng-container *ngIf="despair > 0">
+        <n-icons icon="#icon-despair" [number]="despair"></n-icons>
+      </ng-container>
+    </div>
+    <div class="detail-label">
+      Raw Roll
+    </div>
+    <div class="detail-row">
+      <div class="result-face" [ngClass]="face.type.class" *ngFor="let face of roll.dice">
+        <svg
+          class="die"
+          *ngFor="let pip of face.showing"
+        >
+          <use [attr.xlink:href]="'#icon-'+pip"></use>
+        </svg>
+      </div>
+    </div>
+    <ion-note>
+      {{roll.ts | timeAgo}}
+    </ion-note>
+  </ion-card-content>
+</ion-card>

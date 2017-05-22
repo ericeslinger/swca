@@ -24687,11 +24687,6 @@ ion-navbar.toolbar {
   }
 }
 
-.die {
-  width: 24px;
-  height: 24px;
-}
-
 .child-vertical-margin > * {
   margin-bottom: 0.5em;
   margin-top: 0.5em;
@@ -24705,50 +24700,55 @@ ion-navbar.toolbar {
   margin-bottom: 0;
 }
 
-.challenge {
+.die {
+  width: 24px;
+  height: 24px;
+}
+
+.die.challenge {
   stroke: #000000;
   stroke-linejoin: round;
   stroke-width: 10;
   fill: #A71F34;
 }
 
-.ability {
+.die.ability {
   stroke: #000000;
   stroke-linejoin: round;
   stroke-width: 10;
   fill: #1D7F37;
 }
 
-.difficulty {
+.die.difficulty {
   stroke: #000000;
   stroke-linejoin: round;
   stroke-width: 10;
   fill: #3C1F5C;
 }
 
-.boost {
+.die.boost {
   stroke: #000000;
   stroke-linejoin: round;
   stroke-width: 10;
   fill: #A2C8EF;
 }
 
-.setback {
+.die.setback {
   stroke: #000000;
   stroke-linejoin: round;
   stroke-width: 10;
   fill: #000000;
 }
 
-.strong {
-  font-weight: 500;
-}
-
-.force {
+.die.force {
   stroke: #000000;
   stroke-linejoin: round;
   stroke-width: 10;
   fill: #FFFFFF;
+}
+
+.strong {
+  font-weight: 500;
 }
 
 critical-roller {
@@ -24795,6 +24795,92 @@ die-chooser {
 
 die-chooser .skinny-button {
   padding: 0;
+}
+
+roll-result .dice-history {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+}
+
+roll-result .result-face {
+  border: 1px solid black;
+  margin: 4px;
+  padding: 2px;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+roll-result .result-face.proficiency {
+  background-color: #CBD32C;
+  fill: black;
+}
+
+roll-result .result-face.ability {
+  background-color: #1D7F37;
+  fill: black;
+}
+
+roll-result .result-face.challenge {
+  background-color: #A71F34;
+  fill: white;
+}
+
+roll-result .result-face.difficulty {
+  background-color: #3C1F5C;
+  fill: white;
+}
+
+roll-result .result-face.boost {
+  background-color: #A2C8EF;
+  fill: black;
+}
+
+roll-result .result-face.setback {
+  background-color: #000000;
+  fill: white;
+}
+
+roll-result .result-face.force {
+  background-color: #FFFFFF;
+  fill: black;
+}
+
+roll-result n-icons {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-flow: row wrap;
+  -ms-flex-flow: row wrap;
+  flex-flow: row wrap;
+}
+
+roll-result n-icons svg {
+  height: 24px;
+  width: 24px;
+  margin-right: 8px;
+}
+
+roll-result .detail-row {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-flow: row wrap;
+  -ms-flex-flow: row wrap;
+  flex-flow: row wrap;
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
 }
 
 page-roll-results .result-header {

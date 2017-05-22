@@ -1,4 +1,4 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component, ViewChild, AfterViewInit } from '@angular/core';
 import { Platform, NavController } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -10,16 +10,16 @@ import { History } from '../pages/history/history';
 @Component({
   templateUrl: 'app.html'
 })
-export class MyApp {
+export class MyApp implements AfterViewInit {
   // rootPage: any = SkillRoll;
-  rootPage: any = SkillRoll;
+  rootPage: any;
   rollPage = SkillRoll;
   settingsPage = Settings;
   historyPage = History;
   @ViewChild('content') nav: NavController;
 
   openPage(p) {
-    this.rootPage = p;
+    this.nav.setRoot(p);
   }
 
   constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen) {
@@ -29,5 +29,8 @@ export class MyApp {
       statusBar.styleDefault();
       splashScreen.hide();
     });
+  }
+  ngAfterViewInit() {
+    this.nav.setRoot('roll');
   }
 }

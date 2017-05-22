@@ -5,10 +5,14 @@ import { trigger, state, style, animate, transition } from '@angular/animations'
 import { HistoryService } from '../../providers/history';
 import { UserSettingsService } from '../../providers/settings';
 import { DieType, PipCount, PipNames } from '../../models/dice';
+import { RolledDie } from '../../models/history';
 import { randItem } from '../../services/actuallyRandom';
 
 
-@IonicPage()
+@IonicPage({
+  segment: 'results',
+  name: 'results',
+})
 @Component({
   selector: 'page-roll-results',
   templateUrl: 'roll-results.html',
@@ -40,7 +44,7 @@ import { randItem } from '../../services/actuallyRandom';
 export class RollResults {
 
   dice: DieType[];
-  faces: string[][];
+  rolled: RolledDie[];
   results: { [name in PipNames]: number };
   success: boolean;
   net: number;
@@ -52,9 +56,14 @@ export class RollResults {
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public history: HistoryService) {
     this.dice = navParams.data.dice;
-    this.faces = this.dice.map(v => randItem(v.sides))
-    this.results = this.faces
-    .reduce((acc, val) => acc.concat(val), [])
+    this.rolled = this.dice.map((v) => {
+      return {
+        showing: randItem(v.sides),
+        type: v,
+      }
+    });
+    this.results = this.rolled
+    .reduce((acc, val) => acc.concat(val.showing), [])
     .reduce((acc, val) => Object.assign({}, acc, { [val]: acc[val] + 1 }), {
       success: 0,
       failure: 0,
@@ -64,15 +73,11 @@ export class RollResults {
       despair: 0,
       dark: 0,
       light: 0,
-      triumph: 0
+      triumph: 0,
     });
 
-    this.history.notifyRoll({
-      dice: this.dice,
-      faces: this.faces,
-      result: this.results,
-      ts: new Date(),
-    })
+
+
 
     this.forceRoll = this.dice.filter(v => v.label === 'Force').length > 0;
     const netSuccess = this.results.success + this.results.triumph - this.results.failure - this.results.despair;
@@ -103,6 +108,12 @@ export class RollResults {
     } else if (netAdvantage < 0) {
       this.threat = Math.abs(netAdvantage);
     }
+
+    this.history.notifyRoll({
+      dice: this.rolled,
+      result: this.results,
+      ts: new Date(),
+    })
   }
 
   toggleCrit() {

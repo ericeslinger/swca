@@ -7,7 +7,10 @@ import { AllDice, DiceNames, DieType } from '../../models/dice';
 import { ForcePlump } from '../../providers/plump';
 import { UserSettingsData } from '../../models/settings';
 
-@IonicPage()
+@IonicPage({
+  segment: 'roll',
+  name: 'roll',
+})
 @Component({
   selector: 'page-skill-roll',
   templateUrl: 'skill-roll.html',
@@ -55,7 +58,7 @@ export class SkillRoll implements AfterViewInit {
       this.selected$
     )
     .distinctUntilChanged((o, n) => o[0] === n[0])
-    .subscribe((e) => this.navCtrl.push(RollResults, { dice: e[1] }));
+    .subscribe((e) => this.navCtrl.push('results', { dice: e[1] }));
   }
 
   // ngOnDestroy() { }
